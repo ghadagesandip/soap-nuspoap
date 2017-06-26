@@ -6,20 +6,6 @@ $server = new nusoap_server();
 
 $server->configureWSDL('soap3', 'urn:soap3');
 
-$server->wsdl->addComplexType(
-    'Person',
-    'complexType',
-    'struct',
-    'all',
-    '',
-    array(
-        'id_user' => array('name' => 'id_user', 'type' => 'xsd:int'),
-        'fullname' => array('name' => 'fullname', 'type' => 'xsd:string'),
-        'email' => array('name' => 'email', 'type' => 'xsd:string'),
-        'level' => array('name' => 'level', 'type' => 'xsd:int')
-    )
-);
-
 
 $server->register(
     "price",
@@ -29,9 +15,9 @@ $server->register(
 
 $server->register('login',
     array('username' => 'xsd:string', 'password'=>'xsd:string'),  //parameters
-    array('return' => 'tns:Person'),  //output
+    array('return' => 'xsd:string'),  //output
     'urn:server',   //namespace
-    'urn:server#loginServer',  //soapaction
+    'urn:server#login',  //soapaction
     'rpc', // style
     'encoded', // use
     'Check user login');  //description
