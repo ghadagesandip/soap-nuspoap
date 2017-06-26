@@ -13,8 +13,8 @@ function price($name){
         }
     }
 
-    return array('price'=>$price);
-    //return $price;
+
+    return $price;
 
 }
 
@@ -29,6 +29,15 @@ function login($username, $password) {
         'email'=>"john@reese.com",
 		'level'=>99
 	);
+
+    $xml = simplexml_load_file('file.xml') or die(); //file is loaded successfully
+    $xml->asXml('newFile.xml'); // returns false (doesn't save the file)
+
+    $dom = dom_import_simplexml($xml)->ownerDocument;
+    $dom->formatOutput = true;
+    $dom->save('newFile.xml'); // returns false (doesn't save the file)
+    return $dom->saveXML(); // after printing client-side I get the correct XML
+
 }
 
 ?>
