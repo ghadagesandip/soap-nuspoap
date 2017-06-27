@@ -33,7 +33,6 @@ function login($username, $password) {
                    <Exception />
                 </Status>
                 <Data>
-
                       <id>215</id>
                       <product_category_id>1795</product_category_id>
                       <name>Hotel Gaddis</name>
